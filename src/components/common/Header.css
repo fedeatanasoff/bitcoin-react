@@ -15,8 +15,8 @@
   width: 90px;
 }
 
-@media (max-width: 700px) {
+/* @media (max-width: 700px) {
   .Header-logo {
     display: none;
   }
-}
+} */
