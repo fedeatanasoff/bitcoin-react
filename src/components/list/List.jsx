@@ -1,24 +1,33 @@
 import React, { Component } from "react";
 import { API_URL } from "../../config";
 import Table from "./Table";
+import Pagination from "./Pagination";
 import Loading from "../common/Loading";
 
 class List extends Component {
-  state = {
-    error: null,
-    loading: false,
-    currencies: []
-  };
+  constructor() {
+    super();
+    this.state = {
+      error: null,
+      loading: false,
+      currencies: [],
+      page: 1,
+      totalPages: 0
+    };
 
-  //   componentWillMount() {
-  //     console.log("-> component will mount");
-  //   }
+    this.handlePaginationClick = this.handlePaginationClick.bind(this);
+  }
 
   componentDidMount() {
-    console.log("-> component did mount");
+    this.fetchCurrencies();
+  }
+
+  fetchCurrencies() {
+    // console.log("-> component did mount");
+    const { page } = this.state;
     this.setState({ loading: true });
 
-    fetch(`${API_URL}/cryptocurrencies?page=1&perPage=20`)
+    fetch(`${API_URL}/cryptocurrencies?page=${page}&perPage=20`)
       .then(response => {
         return response.json().then(json => {
           return response.ok ? json : Promise.reject(json);
@@ -26,7 +35,11 @@ class List extends Component {
       })
       .then(data => {
         // console.log("Success", data);
-        this.setState({ currencies: data.currencies, loading: false });
+        this.setState({
+          currencies: data.currencies,
+          loading: false,
+          totalPages: data.totalPages
+        });
       })
       .catch(error => {
         // console.log("Error", error);
@@ -44,9 +57,18 @@ class List extends Component {
     }
   }
 
+  handlePaginationClick(direccion) {
+    let nextPage = this.state.page;
+    nextPage = direccion === "next" ? nextPage + 1 : nextPage - 1;
+    this.setState({ page: nextPage }, () => {
+      console.log("pagina: ", this.state.page);
+      this.fetchCurrencies();
+    });
+  }
+
   render() {
     console.log("-> render");
-    const { error, loading, currencies } = this.state;
+    const { error, loading, currencies, totalPages, page } = this.state;
 
     // renderiza solo si el estado en loading es true
     if (loading) {
@@ -63,10 +85,17 @@ class List extends Component {
     }
 
     return (
-      <Table
-        currencies={currencies}
-        renderChangePercent={this.renderChangePercent}
-      />
+      <div>
+        <Table
+          currencies={currencies}
+          renderChangePercent={this.renderChangePercent}
+        />
+        <Pagination
+          page={page}
+          totalPages={totalPages}
+          handlePaginationClick={this.handlePaginationClick}
+        />
+      </div>
     );
   }
 }
