@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { API_URL } from "../../config";
-import "./Table.css";
+import Table from "./Table";
 import Loading from "../common/Loading";
 
 class List extends Component {
@@ -63,35 +63,10 @@ class List extends Component {
     }
 
     return (
-      <div className="Table-container">
-        <table className="Table">
-          <thead className="Table-head">
-            <tr>
-              <th>Cryptomoneda</th>
-              <th>Precio USD</th>
-              <th>Cap. de Mercado en USD</th>
-              <th>Cambios en 24hs</th>
-            </tr>
-          </thead>
-          <tbody className="Table-body">
-            {currencies.map(currency => (
-              <tr key={currency.id}>
-                <td>
-                  <span className="Table-rank">{currency.rank}</span>
-                  {currency.name}
-                </td>
-                <td>
-                  <span className="Table-dollar">$ {currency.price}</span>
-                </td>
-                <td>
-                  <span className="Table-dollar">$ {currency.marketCap}</span>
-                </td>
-                <td>{this.renderChangePercent(currency.percentChange24h)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <Table
+        currencies={currencies}
+        renderChangePercent={this.renderChangePercent}
+      />
     );
   }
 }
