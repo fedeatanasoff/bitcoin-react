@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { API_URL } from "../../config";
 import "./Table.css";
+import Loading from "../common/Loading";
 
 class List extends Component {
   state = {
@@ -32,14 +33,64 @@ class List extends Component {
         this.setState({ error: error.errorMessage, loading: false });
       });
   }
+
+  renderChangePercent(porcentaje) {
+    if (porcentaje > 0) {
+      return <span className="percent-raised">{porcentaje}% &uarr;</span>;
+    } else if (porcentaje < 0) {
+      return <span className="percent-fallen">{porcentaje}% &darr;</span>;
+    } else {
+      return <span>{porcentaje}</span>;
+    }
+  }
+
   render() {
     console.log("-> render");
-    console.log(this.state);
+    const { error, loading, currencies } = this.state;
+
+    // renderiza solo si el estado en loading es true
+    if (loading) {
+      return (
+        <div className="loading-container">
+          <Loading />
+        </div>
+      );
+    }
+
+    // renderiza solo si hay mensaje de error al cargar la info de la API
+    if (error) {
+      return <div className="error">{error}</div>;
+    }
+
     return (
-      <div>
-        {this.state.currencies.map(currency => (
-          <div key={currency.id}>{currency.id}</div>
-        ))}
+      <div className="Table-container">
+        <table className="Table">
+          <thead className="Table-head">
+            <tr>
+              <th>Cryptomoneda</th>
+              <th>Precio USD</th>
+              <th>Cap. de Mercado en USD</th>
+              <th>Cambios en 24hs</th>
+            </tr>
+          </thead>
+          <tbody className="Table-body">
+            {currencies.map(currency => (
+              <tr key={currency.id}>
+                <td>
+                  <span className="Table-rank">{currency.rank}</span>
+                  {currency.name}
+                </td>
+                <td>
+                  <span className="Table-dollar">$ {currency.price}</span>
+                </td>
+                <td>
+                  <span className="Table-dollar">$ {currency.marketCap}</span>
+                </td>
+                <td>{this.renderChangePercent(currency.percentChange24h)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     );
   }
