@@ -34,7 +34,7 @@ class List extends Component {
         });
       })
       .then(data => {
-        // console.log("Success", data);
+        console.log("Success", data);
         this.setState({
           currencies: data.currencies,
           loading: false,
