@@ -3,7 +3,7 @@ import "./Loading.css";
 
 export class Loading extends Component {
   render() {
-    return <i class="fas fa-sync fa-spin fa-2x" />;
+    return <i className="fas fa-sync fa-spin fa-2x" />;
   }
 }
 

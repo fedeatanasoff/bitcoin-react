@@ -3,6 +3,7 @@ import { API_URL } from "../../config";
 import { handleResponse } from "../../helper";
 import "./List.css";
 import Loading from "../common/loading/Loading";
+import Table from "../Table/Table";
 
 class List extends Component {
   constructor() {
@@ -34,18 +35,18 @@ class List extends Component {
     if (percent > 0) {
       return (
         <span className="text-success">
-          {percent}% &nbsp; <i class="fas fa-caret-up" />
+          {percent}&nbsp;% &nbsp; <i className="fas fa-caret-up" />
         </span>
       );
     } else if (percent < 0) {
       return (
         <span className="text-danger">
-          {percent}% &nbsp;
-          <i class="fas fa-caret-down" />
+          {percent}&nbsp;% &nbsp;
+          <i className="fas fa-caret-down" />
         </span>
       );
     } else {
-      return <span>{percent}%</span>;
+      return <span className="text-info">{percent}&nbsp;%</span>;
     }
   };
 
@@ -72,45 +73,10 @@ class List extends Component {
     }
 
     return (
-      <div className="mt-5">
-        <table className="table">
-          <thead className="table-active">
-            <tr>
-              <th scope="col">
-                <span className="text-muted">Crytomoneda</span>
-              </th>
-              <th className="text-muted" scope="col">
-                Precio
-              </th>
-              <th className="text-muted" scope="col">
-                Cap. de Mercado
-              </th>
-              <th className="text-muted" scope="col">
-                24hs cambios
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {currencies.map(currency => (
-              <tr key={currency.id}>
-                <td>
-                  <span className="span-currency rank">
-                    #{currency.rank} &nbsp;
-                  </span>{" "}
-                  <span className="span-currency">{currency.name}</span>
-                </td>
-                <td>
-                  <span className="span-currency">$ {currency.price}</span>
-                </td>
-                <td>
-                  <span className="span-currency">$ {currency.marketCap}</span>
-                </td>
-                <td>{this.renderChangePercent(currency.percentChange24h)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <Table
+        currencies={currencies}
+        renderChangePercent={this.renderChangePercent}
+      />
     );
   }
 }
