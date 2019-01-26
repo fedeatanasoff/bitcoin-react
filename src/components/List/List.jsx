@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { API_URL } from "../../config";
 import { handleResponse } from "../../helper";
 import "./List.css";
+import Loading from "../common/loading/Loading";
 
 class List extends Component {
   constructor() {
@@ -50,9 +51,24 @@ class List extends Component {
 
   render() {
     console.log("desde render => ", this.state.currencies);
+    const { loading, error, currencies } = this.state;
 
-    if (this.state.loading) {
-      return <div>cargando</div>;
+    if (loading) {
+      return (
+        <div className="loading-container mt-5">
+          <Loading />
+        </div>
+      );
+    }
+
+    if (error) {
+      return (
+        <div class="alert  alert-danger mt-5">
+          <p>
+            <i class="fas fa-exclamation-circle" /> &nbsp;{error}
+          </p>
+        </div>
+      );
     }
 
     return (
@@ -75,10 +91,12 @@ class List extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.currencies.map(currency => (
+            {currencies.map(currency => (
               <tr key={currency.id}>
                 <td>
-                  <span className="span-currency">#{currency.rank}</span>{" "}
+                  <span className="span-currency rank">
+                    #{currency.rank} &nbsp;
+                  </span>{" "}
                   <span className="span-currency">{currency.name}</span>
                 </td>
                 <td>

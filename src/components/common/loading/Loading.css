@@ -1,0 +1,20 @@
+.loading {
+  width: 28px;
+  height: 28px;
+  display: inline-block;
+  border: 3px solid rgb(110, 68, 207);
+  text-shadow: 5px 11px 11px #fff;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: rotate 1s infinite linear;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

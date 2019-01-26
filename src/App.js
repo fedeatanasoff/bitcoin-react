@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Header from "./components//common/Header";
+import Header from "./components/common/header/Header";
 // import "./index.css";
 import List from "./components/List/List";
 
