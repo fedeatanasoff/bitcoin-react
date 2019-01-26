@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Header from "./components//common/Header";
-import "./index.css";
+// import "./index.css";
+import List from "./components/List/List";
 
 class App extends Component {
   render() {
@@ -8,8 +9,9 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <h1>{title}</h1>
-        <p>datos financieros actualizados de las criptomonedas</p>
+        <div className="container">
+          <List />
+        </div>
       </div>
     );
   }
