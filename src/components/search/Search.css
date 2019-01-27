@@ -1,0 +1,22 @@
+input {
+  background-color: #303030;
+  border: none;
+  border-bottom: 1px solid gray;
+  /* margin: 0 10px; */
+  /* padding-bottom: 5px; */
+  /* margin-right: 20px; */
+  color: #fff;
+}
+
+input:focus {
+  color: #fff;
+}
+
+.searh-loading {
+  margin-right: 20px !important;
+}
+
+.load {
+  position: absolute;
+  margin-top: -8px !important;
+}
