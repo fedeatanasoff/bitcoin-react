@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
+import { Search } from "../../search/Search";
 
 class Header extends Component {
   render() {
@@ -30,17 +31,7 @@ class Header extends Component {
               </a>
             </li> */}
           </ul>
-          <div className="form-inline my-2 my-lg-0">
-            <input
-              className="form-control mr-sm-2"
-              type="text"
-              placeholder="Search"
-            />
-
-            {/* <button className="btn btn-secondary my-2 my-sm-0" type="submit">
-              Search
-            </button> */}
-          </div>
+          <Search />
         </div>
       </nav>
     );
