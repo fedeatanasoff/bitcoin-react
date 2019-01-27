@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { API_URL } from "../../config";
-import { handleResponse } from "../../helper";
+import { handleResponse, renderChangePercent } from "../../helper";
 import "./List.css";
 import Loading from "../common/loading/Loading";
+import Error from "../common/error/Error";
 import Table from "../Table/Table";
 import Pagination from "../Pagination/Pagination";
 
@@ -34,7 +35,8 @@ class List extends Component {
         this.setState({
           currencies: data.currencies,
           loading: false,
-          totalPages: data.totalPages
+          totalPages: data.totalPages,
+          error: null
         });
       })
       .catch(error => {
@@ -57,25 +59,6 @@ class List extends Component {
     );
   };
 
-  renderChangePercent = percent => {
-    if (percent > 0) {
-      return (
-        <span className="text-success">
-          {percent}&nbsp;% &nbsp; <i className="fas fa-caret-up" />
-        </span>
-      );
-    } else if (percent < 0) {
-      return (
-        <span className="text-danger">
-          {percent}&nbsp;% &nbsp;
-          <i className="fas fa-caret-down" />
-        </span>
-      );
-    } else {
-      return <span className="text-info">{percent}&nbsp;%</span>;
-    }
-  };
-
   render() {
     console.log("desde render => ", this.state.currencies);
     const { loading, error, currencies, page, totalPages } = this.state;
@@ -90,20 +73,15 @@ class List extends Component {
 
     if (error) {
       return (
-        <div class="alert  alert-danger mt-5">
-          <p>
-            <i class="fas fa-exclamation-circle" /> &nbsp;{error}
-          </p>
+        <div className="container">
+          <Error error={error} />
         </div>
       );
     }
 
     return (
       <div>
-        <Table
-          currencies={currencies}
-          renderChangePercent={this.renderChangePercent}
-        />
+        <Table currencies={currencies} />
 
         <Pagination
           page={page}
