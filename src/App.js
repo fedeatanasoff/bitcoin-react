@@ -8,7 +8,6 @@ import "./index.css";
 
 class App extends Component {
   render() {
-    const title = "React Coin";
     return (
       <BrowserRouter>
         <div>

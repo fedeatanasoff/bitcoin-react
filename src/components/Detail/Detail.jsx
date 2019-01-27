@@ -4,7 +4,7 @@ import "./Detail.css";
 import { API_URL } from "../../config";
 import { handleResponse, renderChangePercent } from "../../helper";
 import Loading from "../common/loading/Loading";
-import Error from "../common/error/Error";
+import NotFound from "../notFound/NotFound";
 
 class Detail extends React.Component {
   state = {
@@ -48,8 +48,8 @@ class Detail extends React.Component {
 
     if (error) {
       return (
-        <div className="container">
-          <Error error={error} />
+        <div>
+          <NotFound error={error} />
         </div>
       );
     }

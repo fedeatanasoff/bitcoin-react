@@ -7,7 +7,7 @@ class Header extends Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <Link to="/" className="navbar-brand">
-          <i class="fab fa-react fa-spin rank" />
+          <i className="fab fa-react fa-spin rank" />
           &nbsp; ReactCoins
         </Link>
         <button

@@ -1,8 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "./notFound.css";
 
-const NotFound = () => {
+const NotFound = props => {
   return (
     <div className="container">
       <div className="jumbotron mt-5 text-center">
@@ -11,7 +12,9 @@ const NotFound = () => {
           &nbsp; Pagina no encontrada
         </h1>
         <p className="lead text-muted">
-          No hemos podido encontrar la pagina que buscas
+          {props.error
+            ? props.error
+            : "No hemos podido encontrar la pagina que estas buscando"}
         </p>
         <hr className="my-4" />
 
@@ -21,6 +24,10 @@ const NotFound = () => {
       </div>
     </div>
   );
+};
+
+NotFound.propTypes = {
+  error: PropTypes.string
 };
 
 export default NotFound;

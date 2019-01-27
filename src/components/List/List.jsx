@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { API_URL } from "../../config";
-import { handleResponse, renderChangePercent } from "../../helper";
+import { handleResponse } from "../../helper";
 import "./List.css";
 import Loading from "../common/loading/Loading";
-import Error from "../common/error/Error";
+import NotFound from "../notFound/NotFound";
 import Table from "../Table/Table";
 import Pagination from "../Pagination/Pagination";
 
@@ -40,7 +40,7 @@ class List extends Component {
         });
       })
       .catch(error => {
-        // console.log("Error", error);
+        console.log("Error", error);
         this.setState({ loading: false, error: error.errorMessage });
       });
   };
@@ -60,7 +60,7 @@ class List extends Component {
   };
 
   render() {
-    console.log("desde render => ", this.state.currencies);
+    console.log("desde render => ", this.state.error);
     const { loading, error, currencies, page, totalPages } = this.state;
 
     if (loading) {
@@ -73,8 +73,8 @@ class List extends Component {
 
     if (error) {
       return (
-        <div className="container">
-          <Error error={error} />
+        <div>
+          <NotFound error={error} />
         </div>
       );
     }
