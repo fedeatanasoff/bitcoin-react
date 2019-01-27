@@ -1,0 +1,7 @@
+.color-not {
+  color: #e59c17;
+}
+
+.btn:hover {
+  color: #303030 !important;
+}

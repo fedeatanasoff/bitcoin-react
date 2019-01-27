@@ -5,7 +5,7 @@ import "./Table.css";
 const Table = props => {
   const { currencies, renderChangePercent } = props;
   return (
-    <div className="mt-5">
+    <div className="mt-5 container">
       <table className="table">
         <thead className="table-active">
           <tr>
