@@ -20,3 +20,21 @@ input:focus {
   position: absolute;
   margin-top: -8px !important;
 }
+
+.list-group-item {
+  margin-left: 10px;
+}
+
+.ul-lista {
+  position: absolute;
+  top: 50px !important;
+  margin-left: 20px !important;
+  /* left: 16px !important; */
+  z-index: 100;
+}
+
+@media (max-width: 990px) {
+  .ul-lista {
+    top: 90px !important;
+  }
+}

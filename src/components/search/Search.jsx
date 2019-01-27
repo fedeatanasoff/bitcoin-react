@@ -5,7 +5,8 @@ import "./Search.css";
 export class Search extends Component {
   state = {
     searchQuery: "",
-    loading: false
+    loading: false,
+    searchResult: []
   };
 
   handleChange = event => {
@@ -23,8 +24,41 @@ export class Search extends Component {
       .then(handleResponse)
       .then(data => {
         console.log(data);
-        this.setState({ loading: false });
+        this.setState({ loading: false, searchResult: data });
       });
+  };
+
+  renderResult = () => {
+    let { searchResult, searchQuery, loading } = this.state;
+
+    if (!searchQuery) {
+      return "";
+    }
+
+    if (searchResult.length > 0) {
+      return (
+        <ul className="list-group ul-lista">
+          {searchResult.map(result => (
+            <li
+              key={result.id}
+              className="list-group-item d-flex justify-content-between align-items-start"
+            >
+              {result.name}
+            </li>
+          ))}
+        </ul>
+      );
+    }
+
+    if (!loading) {
+      return (
+        <ul className="list-group ul-lista">
+          <li className="list-group-item d-flex justify-content-between align-items-start">
+            sin resultados
+          </li>
+        </ul>
+      );
+    }
   };
 
   render() {
@@ -37,6 +71,7 @@ export class Search extends Component {
             <i className="fas fa-spinner fa-spin load" />
           </div>
         )}
+        {this.renderResult()}
       </div>
     );
   }
