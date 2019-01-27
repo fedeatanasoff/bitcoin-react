@@ -64,7 +64,7 @@ export class Search extends Component {
   render() {
     return (
       <div className="form-inline my-2 my-lg-0">
-        <i className="fas fa-search-dollar" />
+        <i className="fas fa-search-dollar icon-search" />
         <input onChange={this.handleChange} placeholder="buscar moneda" />
         {this.state.loading && (
           <div className="search-loading">
