@@ -1,18 +1,4 @@
 import React from "react";
-<<<<<<< HEAD
-/**
- *
- * @param {jsx} porcentaje
- */
-
-export const renderChangePercent = porcentaje => {
-  if (porcentaje > 0) {
-    return <span className="percent-raised">{porcentaje}% &uarr;</span>;
-  } else if (porcentaje < 0) {
-    return <span className="percent-fallen">{porcentaje}% &darr;</span>;
-  } else {
-    return <span>{porcentaje}</span>;
-=======
 
 /**
  *
@@ -49,6 +35,5 @@ export const renderChangePercent = percent => {
     );
   } else {
     return <span className="text-info">{percent}&nbsp;%</span>;
->>>>>>> starter
   }
 };
