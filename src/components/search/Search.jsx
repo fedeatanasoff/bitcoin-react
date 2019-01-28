@@ -38,7 +38,7 @@ class Search extends Component {
 
   handleRedirect = currencyId => {
     this.setState({ searchQuery: "", searchResult: [] });
-    console.log("redirect => ", this.props.history);
+    console.log("enviando desde search => ", this.props.history);
     this.props.history.push(`/currency/${currencyId}`);
   };
 
