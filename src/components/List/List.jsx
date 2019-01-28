@@ -31,7 +31,7 @@ class List extends Component {
     fetch(`${API_URL}/cryptocurrencies?page=${page}&perPage=20`)
       .then(handleResponse)
       .then(data => {
-        console.log("Success", data);
+        // console.log("Success", data);
         this.setState({
           currencies: data.currencies,
           loading: false,
@@ -40,7 +40,7 @@ class List extends Component {
         });
       })
       .catch(error => {
-        console.log("Error", error);
+        // console.log("Error", error);
         this.setState({ loading: false, error: error.errorMessage });
       });
   };
@@ -60,7 +60,7 @@ class List extends Component {
   };
 
   render() {
-    console.log("desde render => ", this.state.error);
+    // console.log("desde render => ", this.state.error);
     const { loading, error, currencies, page, totalPages } = this.state;
 
     if (loading) {
@@ -82,7 +82,6 @@ class List extends Component {
     return (
       <div>
         <Table currencies={currencies} />
-
         <Pagination
           page={page}
           totalPages={totalPages}

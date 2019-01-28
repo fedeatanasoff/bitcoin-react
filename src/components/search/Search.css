@@ -33,6 +33,7 @@ input:focus {
   margin-left: 10px;
   width: 165px;
   color: #e59c17;
+  cursor: pointer;
 }
 
 .ul-lista {

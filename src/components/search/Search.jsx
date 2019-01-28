@@ -1,13 +1,21 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import { handleResponse } from "../../helper";
 import { API_URL } from "../../config";
 import "./Search.css";
-export class Search extends Component {
-  state = {
-    searchQuery: "",
-    loading: false,
-    searchResult: []
-  };
+
+class Search extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      searchQuery: "",
+      loading: false,
+      searchResult: []
+    };
+
+    console.log("props =>", this.props);
+  }
 
   handleChange = event => {
     let inputValue = event.target.value;
@@ -28,6 +36,12 @@ export class Search extends Component {
       });
   };
 
+  handleRedirect = currencyId => {
+    this.setState({ searchQuery: "", searchResult: [] });
+    console.log("redirect => ", this.props.history);
+    this.props.history.push(`/currency/${currencyId}`);
+  };
+
   renderResult = () => {
     let { searchResult, searchQuery, loading } = this.state;
 
@@ -42,6 +56,7 @@ export class Search extends Component {
             <li
               key={result.id}
               className="list-group-item d-flex justify-content-between align-items-start"
+              onClick={() => this.handleRedirect(result.id)}
             >
               {result.name}
             </li>
@@ -62,10 +77,15 @@ export class Search extends Component {
   };
 
   render() {
+    console.log(this.state.searchQuery);
     return (
       <div className="form-inline my-2 my-lg-0">
         <i className="fas fa-search-dollar icon-search" />
-        <input onChange={this.handleChange} placeholder="buscar moneda" />
+        <input
+          onChange={this.handleChange}
+          placeholder="buscar moneda"
+          value={this.state.searchQuery}
+        />
         {this.state.loading && (
           <div className="search-loading">
             <i className="fas fa-spinner fa-spin load" />
@@ -77,4 +97,4 @@ export class Search extends Component {
   }
 }
 
-export default Search;
+export default withRouter(Search);

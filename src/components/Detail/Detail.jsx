@@ -34,7 +34,7 @@ class Detail extends React.Component {
   }
 
   render() {
-    console.log("detalles => ", this.state.currency);
+    // console.log("detalles => ", this.state.currency);
     const { currency, loading, error } = this.state;
 
     if (loading) {

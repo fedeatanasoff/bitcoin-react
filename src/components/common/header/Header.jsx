@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
-import { Search } from "../../search/Search";
+import Search from "../../search/Search";
 
 class Header extends Component {
   render() {
