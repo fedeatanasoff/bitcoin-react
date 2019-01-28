@@ -1,22 +1,28 @@
 import React, { Component } from "react";
-import Header from "./components//common/Header";
-import List from "./components/list/List";
-import NotFound from "./components/notFound/NotFound";
-import Detail from "./components/detail/Detail";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Header from "./components/common/header/Header";
+import List from "./components/List/List";
+import NotFound from "./components/notFound/NotFound";
+import Detail from "./components/Detail/Detail";
+import Footer from "./components/common/footer/Footer";
+
 import "./index.css";
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
+        <div className="app">
           <Header />
           <Switch>
-            <Route path="/" exact component={List} />
-            <Route path="/currency/:id" exact component={Detail} />
+            <Route path="/" component={List} exact />
+            <Route path="/currency/:id" component={Detail} exact />
             <Route component={NotFound} />
           </Switch>
+          <Footer />
+          {/* <div className="container">
+  <List />
+</div> */}
         </div>
       </BrowserRouter>
     );
