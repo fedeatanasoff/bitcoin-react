@@ -108,7 +108,7 @@ class Detail extends React.Component {
             </div>
           </div>
         </div>
-        <div className="row justify-content-center">
+        <div className="row justify-content-center detail-btn">
           <Link to="/" className="btn btn-outline-warning mt-5 mb-3">
             Volver a la pagina principal
           </Link>

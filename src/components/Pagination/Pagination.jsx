@@ -5,7 +5,7 @@ import "./Pagination.css";
 const Pagination = props => {
   const { page, totalPages, handlePaginationClick } = props;
   return (
-    <div className="mt-5 mb-5 d-flex justify-content-center">
+    <div className="mt-5 d-flex justify-content-center pagi">
       <button
         className="btn btn-success"
         onClick={() => handlePaginationClick("prev")}
