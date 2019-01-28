@@ -62,7 +62,7 @@ class Detail extends React.Component {
     }
 
     return (
-      <div className="container">
+      <div className="container detail-app">
         <div className="row justify-content-center">
           <div className="col-md-6">
             <div className="card mt-5 ">

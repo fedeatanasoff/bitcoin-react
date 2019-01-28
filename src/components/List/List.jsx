@@ -80,7 +80,7 @@ class List extends Component {
     }
 
     return (
-      <div>
+      <div className="mb-5">
         <Table currencies={currencies} />
         <Pagination
           page={page}

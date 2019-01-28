@@ -4,6 +4,7 @@ import Header from "./components/common/header/Header";
 import List from "./components/List/List";
 import NotFound from "./components/notFound/NotFound";
 import Detail from "./components/Detail/Detail";
+import Footer from "./components/common/footer/Footer";
 import "./index.css";
 
 class App extends Component {
@@ -17,7 +18,7 @@ class App extends Component {
             <Route path="/currency/:id" component={Detail} exact />
             <Route component={NotFound} />
           </Switch>
-
+          <Footer />
           {/* <div className="container">
   <List />
 </div> */}

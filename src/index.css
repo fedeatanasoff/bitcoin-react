@@ -1,5 +1,13 @@
+/* html,
+body {
+  height: 100%;
+} */
+
 .app {
-  overflow: hidden;
+  overflow: auto;
+  min-height: 100vh;
+  position: relative;
+  /* margin: 0; */
 }
 
 .loading-container {
