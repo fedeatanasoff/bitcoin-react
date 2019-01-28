@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta
@@ -12,7 +12,7 @@
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/img/favicon.png" />
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -29,7 +29,27 @@
       integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
       crossorigin="anonymous"
     />
-    <title>React App</title>
+
+    <!-- Social Meta para Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://coin-react.netlify.com/" />
+    <meta property="og:title" content="ReactCoins" />
+    <meta property="og:image" content="%PUBLIC_URL%/img/reactcoins.jpg" />
+    <meta
+      property="og:description"
+      content="Valor, cambios y cotizacion de cryptomendas"
+    />
+    <meta property="og:site_name" content="ReactCoins" />
+    <meta property="og:locale" content="es_AR" />
+    <!-- Next tags are optional but recommended -->
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Apple Touch Icon (at least 200x200px) -->
+    <link rel="apple-touch-icon" href=%PUBLIC_URL%/img/apple-favicon.png" />
+    <!-- To run web application in full-screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>ReactCoins</title>
   </head>
   <body>
     <noscript> You need to enable JavaScript to run this app. </noscript>
